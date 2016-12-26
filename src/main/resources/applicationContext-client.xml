@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">  
+          
+        <bean id="chinaSayHelloServiceRmi" class="org.springframework.remoting.rmi.RmiProxyFactoryBean" >  
+            <property name="serviceUrl" value="rmi://172.20.10.189:9999/chinaSayHelloService" />  
+            <property name="serviceInterface" value="com.pci.data.rmi.service.ISayHelloService"/>  
+        </bean>  
+</beans> 

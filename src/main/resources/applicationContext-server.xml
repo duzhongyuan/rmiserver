@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">  
+          
+        <bean id="chinaSayHelloService" class="com.pci.data.rmi.service.impl.SayHelloServiceImpl" />  
+          
+        <bean id="chinaSayHelloServiceRmi" class="org.springframework.remoting.rmi.RmiServiceExporter" >  
+            <property name="serviceName" value="chinaSayHelloService"/>
+            <property name="service" ref="chinaSayHelloService"/>
+            <property name="serviceInterface" value="com.pci.data.rmi.service.ISayHelloService"/>
+            <!-- 指定接受数据的端口 -->
+            <property name="registryPort" value="9999"/>
+            <!-- 指定响应数据的端口  否则则会随机生成  如果开启防火墙的话要打开这个端口   否则将会无法响应请求  -->
+            <property name="servicePort" value="10000"/>
+            <!-- <property name="registryHost" value="172.20.10.138"/> -->
+        </bean>  
+</beans> 
